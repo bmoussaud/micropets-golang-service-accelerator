@@ -1,7 +1,7 @@
 apiVersion: accelerator.apps.tanzu.vmware.com/v1alpha1
 kind: Accelerator
 metadata:
-  name: micropets-java-service-accelerator
+  name: micropets-golang-service-accelerator
   namespace: accelerator-system
 spec:
   git:

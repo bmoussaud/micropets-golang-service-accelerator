@@ -22,36 +22,8 @@ accelerator:
       dataType: string
       defaultValue: akseutap2registry.azurecr.io
 engine:
-  merge:
-    - include: ["**/**"]
-      exclude:
-        [
-          "pom.xml",
-          "**/*.java",
-          ".git",
-          "k8s",
-          "src/main/java/**",
-          "applications/**",
-          "ytt/**",
-          "k8s/**",
-          "config/**",
-          "README.md",
-          "Tiltfile",
-          "Makefile",
-          "catalog-info.yaml",
-          "src/main/resources/schema-h2.sql"
-        ]
-    - include: ["pom.xml"]
-      chain:
-        - type: ReplaceText
-          substitutions:
-            - text: my-petservice              
-              with: "#petKind.toLowerCase()+ 's'"
-            - text: PetKind
-              with: "#petKind"
-            - text: pkgName
-              with: "#pkgName"
-    - include: ["config/**", "README.md","git-push.sh","Tiltfile","catalog-info.yaml","src/main/resources/schema-h2.sql","src/main/resources/application.yml"]
+  merge:   
+    - include: ["config/**", "README.md","git-push.sh","Tiltfile","**/*.go","go.mod","go.sum"]
       chain:
         - type: ReplaceText
           substitutions:
@@ -63,21 +35,8 @@ engine:
               with: "#petKind.toLowerCase()+ 's'" 
             - text: imageRegistry
               with: "#imageRegistry.toLowerCase()"
-    - include: ["**/*.go"]
-      chain:
-        - type: ReplaceText
-          substitutions:
-            - text: PetKind
-              with: "#petKind"
-            - text: lowercasePetKind
-              with: "#petKind.toLowerCase()+ 's'" 
             - text: petkind
-              with: "#petKind.toLowerCase()+ 's'" 
-        - type: OpenRewriteRecipe
-          recipe: org.openrewrite.java.ChangePackage
-          options:
-            oldPackageName: "'com.renamethis'"
-            newPackageName: "#pkgName"
+              with: "#petKind.toLowerCase()+ 's'"
   chain:
     - type: RewritePath
       regex: (.*)PetKind(.*)

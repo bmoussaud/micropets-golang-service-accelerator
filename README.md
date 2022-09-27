@@ -1,6 +1,6 @@
 # PetKind MicroService
 
-This is a sample of a Java Spring app that works with Tilt and the Tanzu Application Platform.
+This is a sample of a GoLang app that works with Tilt and the Tanzu Application Platform.
 It provides the framework to enhance the MicroPet Application
 
 ## Dependencies

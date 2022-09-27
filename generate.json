@@ -1,5 +1,5 @@
 {
-    "projectName": "micropets-java-service-accelerator",
+    "projectName": "micropets-golang-service-accelerator",
     "petKind": "Snake",
     "pkgName": "org.demo.micropets"
 }

@@ -63,13 +63,15 @@ engine:
               with: "#petKind.toLowerCase()+ 's'" 
             - text: imageRegistry
               with: "#imageRegistry.toLowerCase()"
-    - include: ["**/*.java"]
+    - include: ["**/*.go"]
       chain:
         - type: ReplaceText
           substitutions:
             - text: PetKind
               with: "#petKind"
             - text: lowercasePetKind
+              with: "#petKind.toLowerCase()+ 's'" 
+            - text: petkind
               with: "#petKind.toLowerCase()+ 's'" 
         - type: OpenRewriteRecipe
           recipe: org.openrewrite.java.ChangePackage

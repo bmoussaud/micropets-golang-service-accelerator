@@ -65,9 +65,9 @@ func db() PetKinds {
 			{70, "Kaa", "An Indian Python", 4,
 				"http://personnages-disney.com/Images/Vignettes%20bleues%20V4/Kaa.png", GlobalConfig.Service.From, "/petkind/v1/data/0"},
 			{71, "Nagini", "python-viper", 11,
-				"https://static.wikia.nocookie.net/villains-fr/images/b/be/L_nagini01_cap_hpe4.png/revision/latest?cb=20200609102142&path-prefix=fr", GlobalConfig.Service.From, "/petkind/v1/data/1"},
+				"https://figurinepop.com/public/2018/12/nagini1.jpg", GlobalConfig.Service.From, "/petkind/v1/data/1"},
 			{72, "Roger", "King Cobras", 12,
-				"https://commons.wikimedia.org/wiki/File:12_-_The_Mystical_King_Cobra_and_Coffee_Forests.jpg?uselang=fr", GlobalConfig.Service.From, "/petkind/v1/data/2"},
+				"https://upload.wikimedia.org/wikipedia/commons/4/4d/12_-_The_Mystical_King_Cobra_and_Coffee_Forests.jpg", GlobalConfig.Service.From, "/petkind/v1/data/2"},
 			{73, "Pataya", "Green Snake", 27,
 				"https://images.itnewsinfo.com/lmi/articles/grande/000000070110.jpg", GlobalConfig.Service.From, "/petkind/v1/data/3"}}}
 

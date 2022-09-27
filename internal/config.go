@@ -47,6 +47,7 @@ func LoadConfiguration() Config {
 
 		GlobalConfig.Service.Port = ":8080"
 		GlobalConfig.Service.Listen = true
+		GlobalConfig.Service.Mode = "RANDOM_NUMBER"
 		viper.AutomaticEnv()
 
 		if serviceConfigDir := os.Getenv("SERVICE_CONFIG_DIR"); serviceConfigDir != "" {

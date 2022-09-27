@@ -24,7 +24,7 @@ publish:
 	git add -A  && git commit -m "accelerator" && git push
 
 generate: push-accelerator
-	-rm -rf generated target	
+	-rm -rf generated 	
 	mkdir generated
 	$(TANZU_ACCELERATOR) generate $(ACCELERATOR_NAME) --server-url http://localhost:8877 --output-dir generated --options-file generate.json
 	cd generated && unzip *.zip 

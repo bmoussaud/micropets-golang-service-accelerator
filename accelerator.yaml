@@ -10,12 +10,7 @@ accelerator:
       label: "Kind"
       display: true
       defaultValue: Snake
-      required: true
-    - name: pkgName
-      label: Package
-      description: The name of the package
-      dataType: string
-      defaultValue: org.moussaud.micropets
+      required: true    
     - name: imageRegistry
       label: Image registry
       description: the image registry 

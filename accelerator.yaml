@@ -1,0 +1,82 @@
+accelerator:
+  displayName: Micropets GoLang Service
+  description: Tanzu Application Platform Accelerator to spin up a new service for the micropets app
+  iconUrl: https://github.com/bmoussaud/micropets-golang-service-accelerator/raw/main/pet-silhouette-icons.png
+  tags:
+    - golang    
+    - micropets
+  options:
+    - name: petKind
+      label: "Kind"
+      display: true
+      defaultValue: Snake
+      required: true
+    - name: pkgName
+      label: Package
+      description: The name of the package
+      dataType: string
+      defaultValue: org.moussaud.micropets
+    - name: imageRegistry
+      label: Image registry
+      description: the image registry 
+      dataType: string
+      defaultValue: akseutap2registry.azurecr.io
+engine:
+  merge:
+    - include: ["**/**"]
+      exclude:
+        [
+          "pom.xml",
+          "**/*.java",
+          ".git",
+          "k8s",
+          "src/main/java/**",
+          "applications/**",
+          "ytt/**",
+          "k8s/**",
+          "config/**",
+          "README.md",
+          "Tiltfile",
+          "Makefile",
+          "catalog-info.yaml",
+          "src/main/resources/schema-h2.sql"
+        ]
+    - include: ["pom.xml"]
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: my-petservice              
+              with: "#petKind.toLowerCase()+ 's'"
+            - text: PetKind
+              with: "#petKind"
+            - text: pkgName
+              with: "#pkgName"
+    - include: ["config/**", "README.md","git-push.sh","Tiltfile","catalog-info.yaml","src/main/resources/schema-h2.sql","src/main/resources/application.yml"]
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: my-petservice
+              with: "#petKind.toLowerCase()+ 's'" 
+            - text: PetKind
+              with: "#petKind"
+            - text: lowercasePetKind
+              with: "#petKind.toLowerCase()+ 's'" 
+            - text: imageRegistry
+              with: "#imageRegistry.toLowerCase()"
+    - include: ["**/*.java"]
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: PetKind
+              with: "#petKind"
+            - text: lowercasePetKind
+              with: "#petKind.toLowerCase()+ 's'" 
+        - type: OpenRewriteRecipe
+          recipe: org.openrewrite.java.ChangePackage
+          options:
+            oldPackageName: "'com.renamethis'"
+            newPackageName: "#pkgName"
+  chain:
+    - type: RewritePath
+      regex: (.*)PetKind(.*)
+      rewriteTo: "#g1 + #petKind + #g2"

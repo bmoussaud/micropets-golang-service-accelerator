@@ -31,7 +31,7 @@ type PetKind struct {
 type PetKinds struct {
 	Total    int
 	Hostname string
-	PetKinds   []PetKind `json:"Pets"`
+	PetKinds []PetKind `json:"Pets"`
 }
 
 var calls = 0
@@ -62,14 +62,14 @@ func db() PetKinds {
 	petkind := PetKinds{4,
 		host,
 		[]PetKind{
-			{70, "Nemoo", "Fish Clown", 14,
-				"https://www.sciencesetavenir.fr/assets/img/2019/07/10/cover-r4x3w1000-5d258790dd324-f96f05d4901fc6ce0ab038a685e4d5c99f6cdfe2-jpg.jpg", GlobalConfig.Service.From, "/petkind/v1/data/0"},
-			{71, "Glumpy", "Neon Tetra", 11,
-				"https://www.fishkeepingworld.com/wp-content/uploads/2018/02/Neon-Tetra-New.jpg", GlobalConfig.Service.From, "/petkind/v1/data/1"},
-			{72, "Dory", "Pacific regal blue tang", 12,
-				"http://www.oceanlight.com/stock-photo/palette-surgeonfish-image-07922-671143.jpg", GlobalConfig.Service.From, "/petkind/v1/data/2"},
-			{73, "Argo", "French Fighter", 27,
-				"https://www.aquaportail.com/pictures1003/anemone-clown_1267799900_poisson-combattant.jpg", GlobalConfig.Service.From, "/petkind/v1/data/3"}}}
+			{70, "Kaa", "An Indian Python", 4,
+				"http://personnages-disney.com/Images/Vignettes%20bleues%20V4/Kaa.png", GlobalConfig.Service.From, "/petkind/v1/data/0"},
+			{71, "Nagini", "python-viper", 11,
+				"https://static.wikia.nocookie.net/villains-fr/images/b/be/L_nagini01_cap_hpe4.png/revision/latest?cb=20200609102142&path-prefix=fr", GlobalConfig.Service.From, "/petkind/v1/data/1"},
+			{72, "Roger", "King Cobras", 12,
+				"https://commons.wikimedia.org/wiki/File:12_-_The_Mystical_King_Cobra_and_Coffee_Forests.jpg?uselang=fr", GlobalConfig.Service.From, "/petkind/v1/data/2"},
+			{73, "Pataya", "Green Snake", 27,
+				"https://images.itnewsinfo.com/lmi/articles/grande/000000070110.jpg", GlobalConfig.Service.From, "/petkind/v1/data/3"}}}
 
 	return petkind
 }

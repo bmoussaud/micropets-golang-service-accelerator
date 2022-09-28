@@ -18,7 +18,7 @@ accelerator:
       defaultValue: akseutap2registry.azurecr.io
 engine:
   merge:   
-    - include: ["config/**", "README.md","git-push.sh","Tiltfile","**/*.go","go.mod","go.sum"]
+    - include: ["config/**", "README.md","git-push.sh","Tiltfile","**/*.go","go.mod","go.sum",".tanzuignore","catalog-info.yaml"]
       chain:
         - type: ReplaceText
           substitutions:

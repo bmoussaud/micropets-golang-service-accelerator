@@ -1,6 +1,6 @@
 TANZU_ACCELERATOR=tanzu accelerator
 ACCELERATOR_NAME=micropets-golang-service-accelerator
-REGISTRY=akseutap2registry.azurecr.io
+REGISTRY=akseutap6registry.azurecr.io
 
 push-accelerator: 
 	$(TANZU_ACCELERATOR) push --local-path . --source-image $(REGISTRY)/$(ACCELERATOR_NAME) 
@@ -23,15 +23,12 @@ status:
 publish:
 	git add -A  && git commit -m "accelerator" && git push
 
-generate: push-accelerator
-	-rm -rf generated 	
+generate: push-accelerator	
+	-rm -rf generated target	
 	mkdir generated
-	$(TANZU_ACCELERATOR) generate $(ACCELERATOR_NAME) --server-url http://localhost:8877 --output-dir generated --options-file generate.json
+	$(TANZU_ACCELERATOR) generate $(ACCELERATOR_NAME) --server-url https://accelerator.16x.tanzu.moussaud.org --output-dir ./generated --options-file generate.json
 	cd generated && unzip *.zip 
 	cat generated/$(ACCELERATOR_NAME)/accelerator-log.md
-
-proxy-accelerator:
-	kubectl port-forward service/acc-server -n accelerator-system 8877:80
 
 deploy-secret:
 	kubectl create secret docker-registry regsecrets --namespace accelerator-system --docker-server=$(REGISTRY) --docker-username=$(INSTALL_REGISTRY_USERNAME) --docker-password=$(INSTALL_REGISTRY_PASSWORD)

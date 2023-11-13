@@ -29,5 +29,5 @@ k8s_custom_deploy(
     ]
 )
 
-k8s_resource('lowercasePetKind', port_forwards=["8080:8080"], extra_pod_selectors=[{'serving.knative.dev/service': 'lowercasePetKind'}]) 
+k8s_resource('lowercasePetKind', port_forwards=["8080:8080"], extra_pod_selectors=[{'serving.knative.dev/service': 'lowercasePetKind-java'}]) 
 

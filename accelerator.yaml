@@ -15,7 +15,7 @@ accelerator:
       label: Image registry
       description: the image registry 
       dataType: string
-      defaultValue: akseutap2registry.azurecr.io
+      defaultValue: akseuta7registry.azurecr.io
 engine:
   merge:   
     - include: ["config/**", "README.md","git-push.sh","Tiltfile","**/*.go","go.mod","go.sum",".tanzuignore","catalog-info.yaml"]

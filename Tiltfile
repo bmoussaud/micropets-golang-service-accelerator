@@ -4,7 +4,7 @@ NAMESPACE = os.getenv("NAMESPACE", default='dev-tap')
 
 compile_cmd = 'CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o build/cmd -buildmode pie -trimpath ./cmd/main.go'
 
-allow_k8s_contexts('aks-eu-tap-2')
+allow_k8s_contexts('aks-eu-tap-7')
 
 local_resource(
   'go-build',
